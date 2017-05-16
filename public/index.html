@@ -1,119 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 	<head>
-		<title> Pair Programing Application</title>
+		<meta charset='UTF-8'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Tells Internt Explorer to use the latest rendering engine-->
+		<meta name='viewport' content='width = device-width, initial-scale = 1'><!--sets width of page to device width and zoom = 1 -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.google.com/css?family=Pacifico">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel='shortcut icon' type='image/x-icon'  href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="myCSS/index.css">
+		<title>Shopping Cart</title>
+
+
 	</head>
+	<body>
+  	
 
-	<body><!--background="image/attendance register download4.jpg"-->
+  <div class="jumbotron header">
+  <img src="img/full_Cart1.png" id="nttLogo" alt="shopping cart logo">
+  <span id="websiteTitle">Shopping Cart</span>
+  </div>
 
-		<!--<img  class="logo" hidden> <!-- src="image/attendance register download8.jpg" -->
-		<header>
-			<h1 class="attendReg" > Pair Programing Application</h1>
-		</header>
-		<div id='loader'>
-		</div>
-		<div class="container" id='the1stPage'>
-			<div class="loginPage" id="loginPage">
-				<h2> Login </h2>
+<!-- Carousel -->
+<!-- Surround everything with a div with the class carousel slide -->
+<div id="theCarousel" class="carousel slide" data-ride="carousel">
 
-				<form id="login" action='' method='POST' onsubmit='return false'>
-					<div class="user-Pass">
-						<p style='color:red' id='invalidPass'></p>
-						<p  class="email"> Email <br><input type="email" placeholder="Email address" id="lEmail" class="inputBox" name='lEmail' required></p>
+  <!-- Define how many slides to put in the carousel -->
+  <ol class="carousel-indicators">
+    <li data-target="#theCarousel" data-slide-to="0" class="active"> </li >
+    <li data-target="#theCarousel" data-slide-to="1"> </li>
+    <li data-target ="#theCarousel" data-slide-to="2"> </li>
+  </ol >
 
-						<p class="passW"> Password <br><input type="password" placeholder="Password" id="lPassW" class="inputBox" name='lPassW' required> </p>
+  <!-- Define the text to place over the image -->
+  <div class="carousel-inner">
+    <div class="item active" >
+    <div class ="slide1"></div>
+    <div class="carousel-caption">
+      <h1>Time Constraint</h1>
+      <p>Looking for best product(s) and prices but dont have time to visit stores in different locations?</p>
+      <p><a href="login" class="btn btn-primary btn-lg">Get Started</a></p>
+    </div>
+  </div>
+  <div class="item">
+  <div class="slide2"></div>
+  <div class="carousel-caption">
+    <h1>Home Comfort</h1>
+    <p>Want to purchase products from the comfort of your home?</p>
+    <p><a href="login" class="btn btn-primary btn-lg">Get Started</a></p>
+  </div>
+  </div>
+  <div class="item">
+  <div class="slide3"></div>
+  <div class="carousel-caption">
+  <h1>Need Privacy?</h1>
+  <p>Want to purchase something out of the ordinary that can seem embarassing if seen by others?</p>
+  <p><a href="login" class="btn btn-primary btn-lg">Get Started</a></p>
+  </div>
+  </div>
+  </div>
 
-						<p class="remember-me" hidden><input type="checkbox" id="remember-me">Remember me </p>
-
-						<p><button class='gBtton' name='submit' type="submit" id="loginSubmit" title="Login">Login</button></p>
-					</div>
-
-					<p>Forgot your password?<a href="#" id="noPassW">click here to reset</a></p>
-					<p class="notMember"><a href="#" id="notMember">Not yet a Member?</a></p>
-				</form>
-			</div>
-			<button id='logout'>Log OUT</button>
-			
-					
-		<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
-		<script>
-		  // Initialize Firebase
-		  var config = {
-			apiKey: "AIzaSyAfpU9AaBvW5m4v4LqAsJq6yjDqnvGIOOk",
-			authDomain: "my-pair-programming.firebaseapp.com",
-			databaseURL: "https://my-pair-programming.firebaseio.com",
-			projectId: "my-pair-programming",
-			storageBucket: "my-pair-programming.appspot.com",
-			messagingSenderId: "314355694894"
-		  };
-		  firebase.initializeApp(config);
-		  /*
-		var loginBtn = document.getElementById('loginSubmit');
-		loginBtn.addEventListener('click',login.bind(this));
-		*/
-		var logoutBtn = document.getElementById('logout');
-		logoutBtn.addEventListener('click',logOut.bind(this));
-		
-		var myForm = document.getElementById('login')
-		myForm.addEventListener('submit',login.bind(this));
-		
-		function logOut(){
-		firebase.auth().signOut().then(function() {
-		}).catch(function(error){
-		});
-		}
+  <!-- Set the actions to take when the arrows are clicked -->
+  <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+  <span class="glyphicon glyphicon-chevron-left"> </span>
+  </a>
+  <a class="right carousel-control" href="#theCarousel" data-slide="next">
+  <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  </div>
 
 
-		function login(){
-			var Email = myForm[0] //document.getElementById('lEmail');
-			var passw = myForm[1] //document.getElementById('lPassW');
-			console.log(Email.value + "    " + passw.value)
-			// var myForm = document.getElementById('login');
-			if(Email.checkValidity() && passw.checkValidity()){
-		    firebase.auth().signInWithEmailAndPassword(Email.value, passw.value).then(function(user) {
-		      user.getToken().then((token) => {
-		        //createTokenCookie(token);
-		        //document.cookie =   `token=token`;
-		        let newDate = new Date();
- 						newDate.setDate(newDate.getDate() + 30);
-  					document.cookie = `token=${token}; expires=${newDate}; userUID=${user.uid};path=\/`;
-		        console.log(token);
-		        console.log('USER UID:    ' + user.uid)
-		        //location.assign('/foods');
-		      })
-		    }).catch(function(error){
-		   	  var errorCode = error.code;
-				  var errorMessage = error.message;
-				  console.log(errorMessage);
-		    });
-			}
-		}
-		
-		firebase.auth().onAuthStateChanged(function(user) {
-			if(user){
-				alert('Logged IN')
-				//User Logged IN
-				var token = user.getToken();
-				console.log(JSON.stringify(document.cookie));
-				
-				var xhr = new XMLHttpRequest();
-				xhr.open('POST', 'http://localhost:3000/tokensign');
-				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-				xhr.onload = function(){
-					console.log('signed in as  ' + xhr.responseText);
-				}
-				xhr.send('token' +  token)
-				window.location = '/scrap';
-				//location.assign('/scrap')
-				
-			}
-			else{
-				//alert('Logged OUT')
-				//User not Logged IN
-			}
-		})
-		</script>
 
-		<!--<script src="script/scrap.js"></script>-->
+		<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</body>
 </html>

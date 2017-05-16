@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.6",
-  "description": "A sample Node.js app using Express 4",
+  "name": "shopping-cart",
+  "version": "1.0.0",
+  "description": "A shopping cart Application",
   "engines": {
     "node": "6.10.2"
   },
@@ -10,17 +10,16 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ejs": "2.5.6",
     "express": "^4.15.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "git+https://github.com/framky007/Shopping-Cart.git"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "author": "Ajaps Franklin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/framky007/Shopping-Cart/issues"
+  },
+  "homepage": "https://github.com/framky007/Shopping-Cart#readme"
 }
