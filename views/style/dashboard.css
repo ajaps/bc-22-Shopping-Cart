@@ -68,3 +68,30 @@ body {
   font-size: 2em;
   font-style: italic;
 }
+.tableCart{
+  font-size: 3em;
+}
+.tableHead2{
+  width: 70%;
+}
+.tableHead1{
+  width:20%;
+}
+tr{
+  margin-top: 10%;
+  border-bottom: solid 1px;
+}
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+table.test td {
+    background-color: lime;
+    margin: 12px 12px 12px 12px;
+    padding: 12px 12px 12px 12px;
+}
+table.test {
+    border-collapse: separate;
+    border-spacing: 10px;
+    *border-collapse: expression('separate', cellSpacing = '10px');
+}

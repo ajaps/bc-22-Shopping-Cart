@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="https://fonts.google.com/css?family=Pacifico">
 		<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel='shortcut icon' type='image/x-icon'  href="favicon.ico">
+		<!--<link rel='shortcut icon' type='image/x-icon'  href="favicon.ico">-->
 		<link rel="stylesheet" type="text/css" href="style/dashboard.css">
 		<title>Shopping Cart Login Page</title>
 
@@ -18,15 +18,15 @@
 
 		<!--<img  class="logo" hidden> <!-- src="image/attendance register download8.jpg" -->
 		<div class="jumbotron header">
-			<img src="../public/img/full_Cart1.png" id="nttLogo" alt="shopping cart logo">
+			<img src="../public/img/full_Cart1.png" id="nttLogo" alt="shopping cart logo" draggable="false">
 			<span id="websiteTitle">Shopping Cart</span>
 		</div>
 
 <div class="container productSpace">
 <div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="drag(event)">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="drag(event)" id='Hamburger'>
     <div class="thumbnail">
-      <img src="../public/img/empty_Cart.png" alt="...">
+      <img src="../public/img/empty_Cart.png" alt="emptyCat">
       <div class="caption">
         <h3>Hamburger</h3>
         <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -36,7 +36,7 @@
   </div>
 	
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    <div class="thumbnail" draggable="true" ondragstart="drag(event)">
+    <div class="thumbnail" draggable="true" ondragstart="drag(event)" id='Polenta'>
       <img src="../public/img/empty_Cart.png" alt="...">
       <div class="caption">
         <h3>Polenta</h3>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-    <div class="thumbnail" draggable="true" ondragstart="drag(event)">
+    <div class="thumbnail" draggable="true" ondragstart="drag(event)" id='Meatball Sub'>
       <img src="../public/img/online_shopping.jpeg" alt="...">
       <div class="caption">
         <h3>Meatball Sub</h3>
@@ -58,7 +58,7 @@
   </div>
 
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    <div class="thumbnail" draggable="true"  ondragstart="drag(event)">
+    <div class="thumbnail" draggable="true"  ondragstart="drag(event)" id='Eggplant'>
       <img src="../public/img/full_Cart1.png" alt="...">
       <div class="caption">
         <h3>Eggplant</h3>
@@ -71,41 +71,31 @@
 </div>
 
 <!-- The shopping cart -->
-<div class='jumbotron theCart'>
+<div class='jumbotron theCart' ondrop="drop(event)" ondragover="allowDrop(event)" id='test'>
 			<div class="cartSpace">
-				<img src="../public/img/empty_Cart.png" id="cartLogo" alt="shopping cart logo">
+				<img src="../public/img/empty_Cart.png" id="cartLogo" alt="shopping cart logo" draggable="false">
 				<span id="cartTitle">Shopping Cart</span>
 			</div>
-			<div class='cartHeading'>
-				<p><span class='itemHead1'>Qty</span><span class='itemHead2'>Item</span><span class='itemHead3'>Price</span>
-			</div>
-			
-			<div class="eachItem container">
-				<div class="row">
-					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-					<p>2</p>
-					</div>
-					<div class="col-lg-7 col-md-3 col-sm-3 col-xs-3">
-						<p>Hand Bag</p>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-						<p>$200</p>
-					</div>
-				</div>
-			</div>
-
-						<div class="eachItem container">
-				<div class="row">
-					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-					<p>2</p>
-					</div>
-					<div class="col-lg-7 col-md-3 col-sm-3 col-xs-3">
-						<p>Hand Bag</p>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-						<p>$200</p>
-					</div>
-				</div>
+			<div>
+				<table class='tableCart' id='tableCart'>
+					<thead>
+						<th class='tableHead1'>Qty</th>
+						<th class='tableHead2'>Item</th>
+						<th class='tableHead3'>Price</th>
+					</thead>
+					<tbody>	
+						<tr draggable="true" id='hand-bag'>
+							<td id='qty'>1</td>
+							<td id='itemName'>Hand Bag</td>
+							<td id='price'>$300</td>
+						</tr>
+						<tr draggable="true" id='Eggs'>
+							<td id='qty'>1</td>
+							<td id='itemName'>Eggs</td>
+							<td id='price'>$900</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 </div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
