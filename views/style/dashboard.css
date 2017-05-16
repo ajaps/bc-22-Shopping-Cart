@@ -19,3 +19,52 @@ body {
   padding-left: 19px;
   color: #191970;
 }
+.productSpace{
+  width: 70%;
+  margin-left: 3%;
+}
+.theCart{
+  position: fixed;
+  width: 23%;
+  margin-left: 75%;
+  border: solid black;
+  margin-top: -25vw;
+}
+#cartTitle{
+  font-size: 3em;
+  vertical-align: middle;
+  font-family: 'Pacifico', cursive;
+  padding-left: 19px;
+  color: #191970;
+}
+#cartLogo{
+  height: 50px;
+  width: 50px;
+}
+.cartSpace{
+  border-bottom: 1px black solid;
+  margin-top: -10%;
+  margin-bottom: 5%;
+  text-align: center;
+}
+.itemHead1{
+}
+.itemHead2{
+  margin-left: 20%;
+}
+.itemHead3{
+  margin-left: 35%;
+}
+.eachItem{
+  background-color: red;
+  margin-bottom: 5%;
+}
+.eachItem1{
+  margin-top: -10%;
+  margin-bottom: -80%;
+  padding-bottom: -70%; 
+}
+.itemDetails{
+  font-size: 2em;
+  font-style: italic;
+}
