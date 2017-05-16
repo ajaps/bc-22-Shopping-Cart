@@ -24,7 +24,7 @@ app.get('/register', function (request, response){
 });
 
 app.get('/userPage', function (request, response){
-	response.sendFile(path.join(__dirname,'public','userPage.html'));
+	response.sendFile(path.join(__dirname,'public','dashboard.html'));
 })
 
 app.listen(app.get('port'), function() {

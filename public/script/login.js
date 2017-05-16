@@ -99,7 +99,6 @@ function login(){
 		
 		firebase.auth().onAuthStateChanged(function(user) {
 			if(user){
-				alert('Logged IN')
 				//User Logged IN
 				var token = user.getToken();
 				console.log(JSON.stringify(document.cookie));
@@ -112,12 +111,9 @@ function login(){
 				}
 				xhr.send('token' +  token)
 				location = '/userPage';
-				//window.location = '/scrap';
-				//location.assign('/scrap')
 				
 			}
 			else{
-				//alert('Logged OUT')
 				//User not Logged IN
 			}
 		})
