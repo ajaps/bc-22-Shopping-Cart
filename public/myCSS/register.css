@@ -1,0 +1,43 @@
+body {
+  font-size: 62.5%;
+  font-family: arial, sans-serif;
+  //background-color: #333;
+}
+#nttLogo{
+  height: 100px;
+  width: 100px;
+}
+.header{
+  text-align: center;
+  padding-top: 0.4%;
+  padding-bottom: 0.4%;
+  margin-bottom: 1%;
+}
+#websiteTitle{
+  font-size: 10em;
+  vertical-align: middle;
+  font-family: 'Pacifico', cursive;
+  padding-left: 19px;
+  color: #191970;
+}
+.registerHeader{
+	margin-top: 3%;
+	text-align: center;
+}
+.registerPage{
+	width: 30%;
+}
+.signUpBtn{
+	margin-top: 4%;
+	margin-left: 40%;
+}
+.myLabel{
+font-size:2em;
+font-weight: bold;
+}
+.errMsg{
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	font-size: 2.5em;
+}

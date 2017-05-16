@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Tells Internt Explorer to use the latest rendering engine-->
+		<meta name='viewport' content='width = device-width, initial-scale = 1'><!--sets width of page to device width and zoom = 1 -->
+		<!--<link rel="stylesheet" type="text/css" href="https://fonts.google.com/css?family=Pacifico">-->
+		<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel='shortcut icon' type='image/x-icon'  href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="myCSS/register.css">
+		<title>Shopping Cart Register Page</title>
+
+
+	</head>
+		<body><!--background="image/attendance register download4.jpg"-->
+
+			<!--<img  class="logo" hidden> <!-- src="image/attendance register download8.jpg" -->
+			<div class="jumbotron header">
+				<img src="img/full_Cart1.png" id="nttLogo" alt="shopping cart logo">
+				<span id="websiteTitle">Shopping Cart</span>
+			</div>
+			
+			<div class='container registerPage'>
+			<h1 class='page-header registerHeader'> Register </h1>
+			<form id="register" action='' method='POST' onsubmit='return false'>
+			<p id='errMsg' class='errMsg'><span></span></p>
+				<div class="reg-user-pass">
+					<p><span class='myLabel'> Display Name </span><br>
+					<input type="text" placeholder="Username" id="username" class="form-control" title="Username should not contain space" pattern="(\S){2,}" required></p>
+
+					<p><span class='myLabel'> Email Adress </span> <br><input type="email" placeholder="Email Address" id="regEmail" class="form-control" title="Email Address" required></p>
+
+					<p> <span class='myLabel'>Password </span> <br><input type="password" placeholder="Password" id="regPassW" required pattern=".{6,}" class="form-control" title="Enter a Password that is more than 6 characters" required></p>
+					<p> <span class='myLabel'>Confirm Password </span><br><input type="password" placeholder="Confirm Password" required pattern=".{6,}" id="regCPassW" class="form-control" title="Enter the Same password as above" required></p>
+
+					<p><h4 id="snackBar"></h4><button class='btn btn-primary btn-lg signUpBtn' type="submit" id="regSubmit" title="Sign up">Sign up</button></p>
+					</div>
+
+					<p class="btn-lg"><a  href="/login" id="isMember">Already a member?</a></p>
+				</form>
+			</div>
+		
+		
+			<!--<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			</script>
+			<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+			<script>
+			  // Initialize Firebase
+			  var config = {
+				apiKey: "AIzaSyDWl0OERz9uRh9MuBzR7YCeNxEPWB6JBnQ",
+				authDomain: "shopping-cart-457a6.firebaseapp.com",
+				databaseURL: "https://shopping-cart-457a6.firebaseio.com",
+				projectId: "shopping-cart-457a6",
+				storageBucket: "shopping-cart-457a6.appspot.com",
+				messagingSenderId: "177179232987"
+			  };
+			  firebase.initializeApp(config);
+			</script>
+			<script type="text/javascript" src="script/signUp.js"></script>
+		</body>
+</html>
