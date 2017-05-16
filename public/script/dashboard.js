@@ -1,9 +1,32 @@
 
-//Cart Item Template
-let itemTemplate = '<td id="qty">2</td>'+
-'<td id="itemName">Eggs</td>'+
-'<td id="price">$900</td>';
+window.onload = function() {
+ myPage();
+};
 
+function myPage(){
+	alert('logged Out');
+	let signOff = document.getElementById('signOff');
+	signOff.addEventListener('click', logOut.bind(this));
+}
+
+
+//Check if firebase is authenticated
+firebase.auth().onAuthStateChanged(function(user) {
+	if(user){
+	}
+	else{
+		location = '/';
+	}
+})
+
+
+
+function logOut(){
+	firebase.auth().signOut().then(function() {
+	alert('logged Out');
+	}).catch(function(error){
+	});
+}
 const allItems = {'Eggs':900, 'Hamburger':200, 'Polenta':350, 'Meatball Sub':5000, 'Eggplant':700, 'hand-bag':50000}
 let total = 0;
 //Allow elemetn to recieve other dragged element(s)
@@ -30,24 +53,29 @@ function drop(ev) {
     let newItem = document.getElementById(data)
 
     if(newItem)
-    {
-      // Increment quantity by 1
-      let itemQty = Number(newItem.firstChild.innerHTML);
-      newItem.firstChild.innerHTML = itemQty + 1;
+    { 
+      //Ensures only items from the cart cannot be draaged and dropped to increase the number
+      if(newItem.firstChild.innerHTML)
+      {
+        // Increment quantity by 1
+        let itemQty = Number(newItem.firstChild.innerHTML);
+        newItem.firstChild.innerHTML = itemQty + 1;
 
-      //Calculates and sets cost of total items in the cart
-      total += allItems[data];
-      document.getElementById('totalCost').innerHTML = total;
+        //Calculates and sets cost of total items in the cart
+        total += allItems[data];
+        document.getElementById('totalCost').innerHTML = total;
+      }
     }
     else
     {
       //Checks if the item dragged is valid
-      if(allItems[data]){
+      if(allItems[data] ){
+        console.log(data)
         //Create new item in the cart
         let tr = document.createElement('tr');
         tr.setAttribute('id',data);
         tr.setAttribute('dragable', 'true');
-        tr.setAttribute('value', data);
+        //tr.setAttribute('value', data);
         tr.setAttribute('ondragstart', "dragItemFromCart(event)");
         
         console.log(tr);
