@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Tells Internt Explorer to use the latest rendering engine-->
+		<meta name='viewport' content='width = device-width, initial-scale = 1'><!--sets width of page to device width and zoom = 1 -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.google.com/css?family=Pacifico">
+		<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!--<link rel='shortcut icon' type='image/x-icon'  href="favicon.ico">-->
+		<link rel="stylesheet" type="text/css" href="views/style/dashboard.css">
+		<title>Shopping Cart Login Page</title>
+
+
+	</head>
+
+	<body ><!--background="image/attendance register download4.jpg"-->
+		<div class="jumbotron header">
+			<img src="../public/img/full_Cart1.png" id="nttLogo"  alt="shopping cart logo" draggable="false">
+			<span id="websiteTitle">Shopping Cart</span>
+		</div>
+		<div>
+		<p>Welcome</p>
+		<button class='btn btn-lg btn-danger' id='signOff'>Sign Out</button>
+		</div>
+<div class="container productSpace" ondrop="removeItem(event)" ondragover="allowDrop(event)">
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="thumbnail">
+      <img src="../public/img/empty_Cart.png" alt="emptyCat" value='Hamburger'>
+      <div class="caption">
+        <h3>Hamburger</h3>
+        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+      </div>
+  </div>
+	
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Polenta'>
+      <img src="../public/img/empty_Cart.png" alt="..."value='Polenta'>
+      <div class="caption">
+        <h3>Polenta</h3>
+        <p class='itemDetails' value='Polenta'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Meatball Sub'>
+      <img src="../public/img/online_shopping.jpeg" alt="..." value='Meatball Sub'>
+      <div class="caption">
+        <h3>Meatball Sub</h3>
+        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail" draggable="true"  ondragstart="dragItemToCart(event)" value='Eggplant'>
+      <img src="../public/img/full_Cart1.png" alt="..." value='Eggplant'>
+      <div class="caption">
+        <h3>Eggplant</h3>
+        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- The shopping cart -->
+<div class='jumbotron theCart' ondrop="drop(event)" ondragover="allowDrop(event)" >
+			<div class="cartSpace">
+				<img src="../public/img/empty_Cart.png" id="cartLogo" alt="shopping cart logo" draggable="false">
+				<span id="cartTitle">Shopping Cart</span>
+			</div>
+			<div>
+				<li class="totalBadge list-group-item "><span class="badge badgeNumber" id='totalCost'>0.0</span>TOTAL</li>
+			</div>
+			<div class='table-responsive theTable'>
+				<table class='table table-responsive tableCart table-striped table-hover' id='tableCart'>
+					<thead>
+						<th class='tableHead1'>Qty</th>
+						<th class='tableHead2'>Item</th>
+						<th class='tableHead3'>Price</th>
+					</thead>
+					<tbody>	
+						<tr draggable="true" id='hand-bag' ondragstart="dragItemFromCart(event)">
+							<td id='qty'>1</td>
+							<td id='itemName'>Hand Bag</td>
+							<td id='price'>300</td>
+						</tr>
+						<tr draggable="true" id='Eggs' ondragstart="dragItemFromCart(event)">
+							<td id='qty'>3</td>
+							<td id='itemName'>Eggs</td>
+							<td id='price'>900</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+			apiKey: "AIzaSyDWl0OERz9uRh9MuBzR7YCeNxEPWB6JBnQ",
+			authDomain: "shopping-cart-457a6.firebaseapp.com",
+			databaseURL: "https://shopping-cart-457a6.firebaseio.com",
+			projectId: "shopping-cart-457a6",
+			storageBucket: "shopping-cart-457a6.appspot.com",
+			messagingSenderId: "177179232987"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+		<script src='script/dashboard.js'></script>		
+	</body>
+</html>
