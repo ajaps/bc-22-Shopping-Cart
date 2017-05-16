@@ -4,7 +4,7 @@ let itemTemplate = '<td id="qty">2</td>'+
 '<td id="itemName">Eggs</td>'+
 '<td id="price">$900</td>';
 
-
+const allItems = {'Eggs':900, 'Hamburger':200, 'Polenta':350, 'Meatball Sub':5000, 'Eggplant':700}
 
 //Allow elemetn to recieve other dragged element(s)
 function allowDrop(ev) {
@@ -13,7 +13,8 @@ function allowDrop(ev) {
 
 //Appends data on item drag
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.getAttribute('id'));
+    //ev.dataTransfer.setData("text", ev.target.getAttribute('id'));
+    ev.dataTransfer.setData("text", ev.target.getAttribute('value'));
 }
 
 function drop(ev) {
@@ -24,34 +25,46 @@ function drop(ev) {
     
     let cartTable = document.getElementById('tableCart');
 
-    let tr = document.createElement('tr');
-    tr.setAttribute('id',data);
-    tr.setAttribute('dragable', 'true');
+    let newItem = document.getElementById(data)
 
-    /*
-    //set quantity TD
-    let td = document.createElement('td');
-    td.setAttribute('id','qty');
-    td.innerText = 2;
-    tr.appendChild(td);
-    console.log(tr);
+    if(newItem)
+    {
+      // Increment quantity by 1
+      let itemQty = Number(newItem.firstChild.innerHTML);
+      newItem.firstChild.innerHTML = itemQty + 1;
+    }
+    else
+    {
+      //Create new item in the cart
+      let tr = document.createElement('tr');
+      tr.setAttribute('id',data);
+      tr.setAttribute('dragable', 'true');
 
-    //set item name TD
-    let td1 = document.createElement('td');
-    td1.setAttribute('id','itemName');
-    td1.innerText = 'Google';
-    tr.appendChild(td1);
-    console.log(td1);
+      
+      //set quantity TD
+      let td = document.createElement('td');
+      td.setAttribute('id','qty');
+      td.innerHTML = 1;
+      tr.appendChild(td);
+      console.log(tr);
 
-    //set Price ID
-    let td2 = document.createElement('td');
-    td2.setAttribute('id','price');
-    td2.innerText = '$900';
-    tr.appendChild(td2);
-    console.log(td2);*/
-    tr.innerHTML = itemTemplate;
-    //tr.getElementById('qty').innerText = '5';
-    cartTable.appendChild(tr)
-    
-    console.log(data)
+      //set item name TD
+      let td1 = document.createElement('td');
+      td1.setAttribute('id','itemName');
+      td1.innerHTML = data;
+      tr.appendChild(td1);
+      console.log(td1);
+
+      //set Price ID
+      let td2 = document.createElement('td');
+      td2.setAttribute('id','price');
+      td2.innerHTML = allItems[data];
+      tr.appendChild(td2);
+      console.log(td2);
+      //tr.innerHTML = itemTemplate;
+      //tr.getElementById('qty').innerHTML = '5';
+      cartTable.appendChild(tr)
+      
+      console.log(data)
+    }
 }
