@@ -1,0 +1,21 @@
+body {
+  font-size: 62.5%;
+  font-family: arial, sans-serif;
+}
+#nttLogo{
+  height: 100px;
+  width: 100px;
+}
+.header{
+  text-align: center;
+  padding-top: 0.4%;
+  padding-bottom: 0.4%;
+  margin-bottom: 1%;
+}
+#websiteTitle{
+  font-size: 10em;
+  vertical-align: middle;
+  font-family: 'Pacifico', cursive;
+  padding-left: 19px;
+  color: #191970;
+}
