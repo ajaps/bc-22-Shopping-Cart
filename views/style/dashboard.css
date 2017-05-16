@@ -24,11 +24,11 @@ body {
   margin-left: 3%;
 }
 .theCart{
-  position: fixed;
   width: 23%;
   margin-left: 75%;
-  border: solid black;
+  border: 5px solid black;
   margin-top: -25vw;
+  height: 63em;
 }
 #cartTitle{
   font-size: 3em;
@@ -46,8 +46,6 @@ body {
   margin-top: -10%;
   margin-bottom: 5%;
   text-align: center;
-}
-.itemHead1{
 }
 .itemHead2{
   margin-left: 20%;
@@ -71,6 +69,9 @@ body {
 .tableCart{
   font-size: 3em;
 }
+.theTable{
+  height: 84%;
+}
 .tableHead2{
   width: 70%;
 }
@@ -85,14 +86,23 @@ tr{
 td {
     padding-top: .5em;
     padding-bottom: .5em;
+    border: 5px solid brown;
 }
-table.test td {
-    background-color: lime;
-    margin: 12px 12px 12px 12px;
-    padding: 12px 12px 12px 12px;
+
+.totalBadge{
+  margin-bottom: 50%;
+  font-size: 4em;
+  font-weight: bold;
 }
-table.test {
-    border-collapse: separate;
-    border-spacing: 10px;
-    *border-collapse: expression('separate', cellSpacing = '10px');
+.badgeNumber{
+  font-size:1em;
+}
+thead{
+  position: -ms-sticky;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: blue;
 }
