@@ -1,0 +1,55 @@
+body {
+  font-size: 62.5%;
+  font-family: arial, sans-serif;
+  background-color: #333;
+}
+#nttLogo{
+  height: 100px;
+  width: 100px;
+}
+.header{
+  text-align: center;
+  padding-top: 0.4%;
+  padding-bottom: 0.4%;
+  margin-bottom: 1%;
+}
+#websiteTitle{
+  font-size: 10em;
+  vertical-align: middle;
+  font-family: 'Pacifico', cursive;
+  padding-left: 19px;
+  color: #191970;
+}
+.loginPage{
+	width:30%;
+	margin-left: 50%;
+	background-color: lightgrey;
+}
+.emailWidth{
+	width: 90%;
+}
+.loginHeader{
+text-align: center;
+font-family: 'Pacifico', cursive;
+margin-bottom: 7%;
+}
+.loginBtn{
+margin-left: 40%;
+margin-top:3%;
+}
+.makeBold{
+	font-weight: bold;
+}
+.resetBtn{
+	margin-left: 40%;
+}
+.registerPage{
+	margin-top: 10%;
+	width: 70%;
+}
+.errMsg{
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	font-size: 2.5em;
+}
