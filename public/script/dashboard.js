@@ -4,7 +4,6 @@ window.onload = function() {
 };
 
 function myPage(){
-	alert('logged Out');
 	let signOff = document.getElementById('signOff');
 	signOff.addEventListener('click', logOut.bind(this));
 }
