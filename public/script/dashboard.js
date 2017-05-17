@@ -1,6 +1,7 @@
 
 window.onload = function() {
  myPage();
+ 
 };
 
 function myPage(){
@@ -12,6 +13,7 @@ function myPage(){
 //Check if firebase is authenticated
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user){
+    loadDB();
 	}
 	else{
 		location = '/login';
@@ -40,6 +42,7 @@ function dragItemToCart(ev) {
 }
 
 function drop(ev) {
+
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     //ev.target.appendChild(document.getElementById(data));
@@ -57,12 +60,15 @@ function drop(ev) {
       if(newItem.firstChild.innerHTML)
       {
         // Increment quantity by 1
-        let itemQty = Number(newItem.firstChild.innerHTML);
-        newItem.firstChild.innerHTML = itemQty + 1;
+        let itemQty = Number(newItem.firstChild.innerHTML) + 1;
+        newItem.firstChild.innerHTML = itemQty;
 
         //Calculates and sets cost of total items in the cart
         totalCost += allItems[data];
         document.getElementById('totalCost').innerHTML = totalCost;
+
+        //Write to Firebase Database
+        writeToDB(data, itemQty, allItems[data]);
       }
     }
     else
@@ -105,6 +111,9 @@ function drop(ev) {
         //Calculates Cost of item in the cart
         totalCost += allItems[data];
         document.getElementById('totalCost').innerHTML = totalCost;
+
+        //Write to Firebase Database
+        writeToDB(data, '1', allItems[data]);
       }
     }
 }
@@ -119,18 +128,23 @@ function removeItem(ev) {
     ev.preventDefault();
     let totalCost;
     let data = ev.dataTransfer.getData("text");
-    let newItem = document.getElementById(data)
+    let newItem = document.getElementById(data);
 
     //Get the quantity value
-    let getItemQty = Number(newItem.firstChild.innerHTML);
+    let itemQty = Number(newItem.firstChild.innerHTML);
+    
 
     //Check if qty is  equal to 1 - remove else decrement by 1
-    if(getItemQty>1){
-      newItem.firstChild.innerHTML = getItemQty - 1;
+    if(itemQty>1){
+      itemQty-=1;
+      newItem.firstChild.innerHTML = itemQty;
       totalCost = Number(document.getElementById('totalCost').innerHTML);
       //subtract from total cost
       totalCost =totalCost -  allItems[data];
       document.getElementById('totalCost').innerHTML = totalCost;
+      
+      //Write to Firebase Database
+        writeToDB(data, itemQty, allItems[data]);
     }
     else{
       totalCost = Number(document.getElementById('totalCost').innerHTML);
@@ -139,7 +153,67 @@ function removeItem(ev) {
       document.getElementById('totalCost').innerHTML = totalCost;
       let row = document.getElementById(data);
       row.parentNode.removeChild(row);
-      
-    }
 
+      //Delete item from Firebase Database
+        deleteFromDB(data); 
+    }
   }
+
+function writeToDB(item, qty, price){
+  let userId = firebase.auth().currentUser;
+  console.log(userId);
+  firebase.database().ref('users/' + userId.uid + '/' + item).set({
+	  'qty': qty,
+	  'price': price
+	});
+}
+
+function deleteFromDB(item){
+  let userId = firebase.auth().currentUser;
+  firebase.database().ref('users/' + userId.uid + '/' + item).remove();
+}
+
+function loadDB(){
+  	let userId = firebase.auth().currentUser;
+    console.log(userId.uid);
+
+    //Get Database tree
+	firebase.database().ref('/users/' + userId.uid).once('value').then(function(snapshot) {
+    var username = snapshot.val();
+    console.log(username)
+    let cartTable = document.getElementById('tableBody');
+    let totalCost = 0;
+    //Loop Through database items
+    for(item in username){
+      //Create new item in the cart
+        let tr = document.createElement('tr');
+        tr.setAttribute('id',item);
+        tr.setAttribute('draggable', 'true');
+        tr.setAttribute('ondragstart', "dragItemFromCart(event)");
+        
+        //set quantity TD
+        let td = document.createElement('td');
+        td.setAttribute('id','qty');
+        td.innerHTML = username[item].qty;
+        tr.appendChild(td);
+
+        //set item name TD
+        let td1 = document.createElement('td');
+        td1.setAttribute('id','itemName');
+        td1.innerHTML = item;
+        tr.appendChild(td1);
+
+        //set Price ID
+        let td2 = document.createElement('td');
+        td2.setAttribute('id','price');
+        td2.innerHTML = username[item].price;
+        tr.appendChild(td2);
+        cartTable.appendChild(tr)
+
+        //Calculate Total
+        totalCost += Number(username[item].qty) * Number(username[item].price)
+      console.log(username[item].qty);
+    }
+    document.getElementById('totalCost').innerHTML = totalCost;
+  });
+}

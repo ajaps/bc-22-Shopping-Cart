@@ -23,7 +23,7 @@ body {
 .productSpace{
   width: 70%;
   margin-left: 3%;
-  overflow: scroll;
+  overflow-y: scroll;
   height:470px;
 }
 .productContainer{
