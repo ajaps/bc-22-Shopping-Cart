@@ -23,7 +23,13 @@ body {
 .productSpace{
   width: 70%;
   margin-left: 3%;
+  overflow: scroll;
+  height:470px;
+}
+.productContainer{
+  height: -60%;
   overflow-y: scroll;
+  overflow: scroll;
 }
 .theCart{
   
