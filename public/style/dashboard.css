@@ -82,11 +82,20 @@ body {
 tr{
   margin-top: 10%;
   border-bottom: solid 1px;
+  
+  /*Disable text selection*/
+  /*
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtm-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  */
 }
 td {
     padding-top: .5em;
     padding-bottom: .5em;
-    border: 5px solid brown;
 }
 
 .totalBadge{
@@ -105,4 +114,15 @@ thead{
   position: sticky;
   top: 0px;
   background-color: blue;
+}
+.greeting{
+	position:fixed;
+	margin-left: 75%;
+	border: 3px solid;
+	width: 23%;
+	height: 10%;
+}
+.signOutBtn{
+	margin-left: 70%;
+	margin-top: -3%;
 }

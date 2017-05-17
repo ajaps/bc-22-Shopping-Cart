@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	if(user){
 	}
 	else{
-		location = '/';
+		location = '/login';
 	}
 })
 
@@ -46,8 +46,8 @@ function drop(ev) {
     let totalCost = document.getElementById('totalCost');
     
     
-    //let cartTable = document.getElementById('yt');
-    let cartTable = document.getElementById('tableCart');
+    let cartTable = document.getElementById('tableBody');
+    //let cartTable = document.getElementById('tableCart');
 
     let newItem = document.getElementById(data)
 
@@ -72,19 +72,19 @@ function drop(ev) {
         console.log(data)
         //Create new item in the cart
         let tr = document.createElement('tr');
+		//let tr = cartTable.insertRow(0);
         tr.setAttribute('id',data);
         tr.setAttribute('dragable', 'true');
         //tr.setAttribute('value', data);
         tr.setAttribute('ondragstart', "dragItemFromCart(event)");
+		//tr.addEventListener('dragstart',dragItemFromCart(event));
         
-        console.log(tr);
         //set quantity TD
         let td = document.createElement('td');
         td.setAttribute('id','qty');
         //td.className = 'tableHead1';
         td.innerHTML = 1;
         tr.appendChild(td);
-        console.log(tr);
 
         //set item name TD
         let td1 = document.createElement('td');
@@ -92,17 +92,13 @@ function drop(ev) {
         //td.className = 'tableHead2';
         td1.innerHTML = data;
         tr.appendChild(td1);
-        console.log(td1);
 
         //set Price ID
         let td2 = document.createElement('td');
         td2.setAttribute('id','price');
-        //td.className = 'tableHead3';
         td2.innerHTML = allItems[data];
         tr.appendChild(td2);
-        console.log(td2);
-        //tr.innerHTML = itemTemplate;
-        //tr.getElementById('qty').innerHTML = '5';
+        console.log(tr)
         cartTable.appendChild(tr)
 
         //Calculates Cost of item in the cart
