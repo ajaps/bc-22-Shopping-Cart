@@ -35,10 +35,11 @@ body {
 .theCart{
   
   position: fixed;
-  width: 23%;
-  margin-left: 75%;
+  width: 23vw;
+  margin-left: 75vw;
   border: 5px solid black;
   height: 63em;
+  margin-top: 4.7vw; 
 }
 #cartTitle{
   font-size: 3em;
@@ -52,7 +53,6 @@ body {
   width: 50px;
 }
 .cartSpace{
-  border-bottom: 1px black solid;
   margin-top: -10%;
   margin-bottom: 5%;
   text-align: center;
@@ -126,13 +126,13 @@ thead{
 }
 .greeting{
 	position:fixed;
-	margin-left: 75%;
-  margin-top: -10%;
+	margin-left: 75vw;
+  margin-top: -1vw;
 	border: 3px solid;
-	width: 23%;
-	height: 10%;
+	width: 23vw;
+	height: 5vw;
 }
 .signOutBtn{
-	margin-left: 70%;
-	margin-top: -6%;
+  margin-left: 16vw;
+  font-size: 1.1vw;
 }

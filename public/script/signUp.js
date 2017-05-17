@@ -44,6 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   firebase.database().ref('users/' + user.uid).set({
 	  'username': sessionStorage.username
 	});
+	localStorage.username = sessionStorage.username;
 		//User Logged IN
 		location = '/userPage';
 	}

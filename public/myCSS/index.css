@@ -24,22 +24,29 @@ body {
 }
 /* Carousel Styling */
 .slide1{
-  background-image: url('../img/');
-  height: 500px;
+  background-image: url('/img/time.jpg');
+  height: 450px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .slide2{
-  background-image: url('../img/someoneShopping.png');
-  height: 500px;
+  background-image: url('/img/home-comfort.jpg');
+  height: 450px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .slide3{
-  background-image: url('../img/online_shopping.jpeg');
-  height: 500px;
+  background-image: url('/img/privacy.jpeg');
+  height: 450px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide4{
+  background-image: url('/img/shopAnywhere.jpg');
+  height: 450px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -48,7 +55,10 @@ body {
   font-size: 5.4em;
   font-family: 'Pacifico', cursive;
   padding-bottom: .4em;
+  color: darkblue;
 }
 .carousel-caption p{
-  font-size: 2em;
+  font-size: 3em;
+  color: black;
+  font-weight: bold
 }

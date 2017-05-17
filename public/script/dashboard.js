@@ -19,11 +19,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //check if Username is save in Local storage
     if(localStorage.username){
-      document.getElementById('userName').innerHTML = localStorage.username;
+      document.getElementById('username').innerHTML = localStorage.username;
     }
     else{
       getUserName();
-      document.getElementById('userName').innerHTML = localStorage.username;
+      document.getElementById('username').innerHTML = localStorage.username;
     }
 	}
 	else{
