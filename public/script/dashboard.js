@@ -43,7 +43,7 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     //ev.target.appendChild(document.getElementById(data));
-    let totalCost = document.getElementById('totalCost');
+    let totalCost = Number(document.getElementById('totalCost').innerHTML);
     
     
     let cartTable = document.getElementById('tableBody');
@@ -61,20 +61,19 @@ function drop(ev) {
         newItem.firstChild.innerHTML = itemQty + 1;
 
         //Calculates and sets cost of total items in the cart
-        total += allItems[data];
-        document.getElementById('totalCost').innerHTML = total;
+        totalCost += allItems[data];
+        document.getElementById('totalCost').innerHTML = totalCost;
       }
     }
     else
     {
       //Checks if the item dragged is valid
       if(allItems[data] ){
-        console.log(data)
         //Create new item in the cart
         let tr = document.createElement('tr');
 		//let tr = cartTable.insertRow(0);
         tr.setAttribute('id',data);
-        tr.setAttribute('dragable', 'true');
+        tr.setAttribute('draggable', 'true');
         //tr.setAttribute('value', data);
         tr.setAttribute('ondragstart', "dragItemFromCart(event)");
 		//tr.addEventListener('dragstart',dragItemFromCart(event));
@@ -84,6 +83,7 @@ function drop(ev) {
         td.setAttribute('id','qty');
         //td.className = 'tableHead1';
         td.innerHTML = 1;
+        //td.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td);
 
         //set item name TD
@@ -91,19 +91,20 @@ function drop(ev) {
         td1.setAttribute('id','itemName');
         //td.className = 'tableHead2';
         td1.innerHTML = data;
+        //td1.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td1);
 
         //set Price ID
         let td2 = document.createElement('td');
         td2.setAttribute('id','price');
         td2.innerHTML = allItems[data];
+        //td2.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td2);
-        console.log(tr)
         cartTable.appendChild(tr)
 
         //Calculates Cost of item in the cart
-        total += allItems[data];
-        document.getElementById('totalCost').innerHTML = total;
+        totalCost += allItems[data];
+        document.getElementById('totalCost').innerHTML = totalCost;
       }
     }
 }
@@ -116,29 +117,29 @@ function dragItemFromCart(ev) {
 
 function removeItem(ev) {
     ev.preventDefault();
+    let totalCost;
     let data = ev.dataTransfer.getData("text");
-    console.log(data)
     let newItem = document.getElementById(data)
 
     //Get the quantity value
-    let getItemQty = newItem.firstChild;
-    console.log(getItemQty.nextSibling.innerHTML)
-    let itemQty = Number(getItemQty.nextSibling.innerHTML);
+    let getItemQty = Number(newItem.firstChild.innerHTML);
 
     //Check if qty is  equal to 1 - remove else decrement by 1
-    if(itemQty>1){
-      getItemQty.nextSibling.innerHTML = itemQty - 1;
-
-      let totalCost = Number(document.getElementById('totalCost').innerHTML);
-      console.log(totalCost)
+    if(getItemQty>1){
+      newItem.firstChild.innerHTML = getItemQty - 1;
+      totalCost = Number(document.getElementById('totalCost').innerHTML);
       //subtract from total cost
-      totalCost -= allItems[data];
+      totalCost =totalCost -  allItems[data];
       document.getElementById('totalCost').innerHTML = totalCost;
     }
     else{
+      totalCost = Number(document.getElementById('totalCost').innerHTML);
+      totalCost -= allItems[data];
+      //subtract from total cost      
+      document.getElementById('totalCost').innerHTML = totalCost;
       let row = document.getElementById(data);
       row.parentNode.removeChild(row);
-      console.log(document.getElementById('tableCart'))
+      
     }
 
   }

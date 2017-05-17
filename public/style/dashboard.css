@@ -1,6 +1,7 @@
 body {
   font-size: 62.5%;
   font-family: arial, sans-serif;
+  overflow: hidden;
 }
 #nttLogo{
   height: 100px;
@@ -22,12 +23,14 @@ body {
 .productSpace{
   width: 70%;
   margin-left: 3%;
+  overflow-y: scroll;
 }
 .theCart{
+  
+  position: fixed;
   width: 23%;
   margin-left: 75%;
   border: 5px solid black;
-  margin-top: -25vw;
   height: 63em;
 }
 #cartTitle{
@@ -71,6 +74,7 @@ body {
 }
 .theTable{
   height: 84%;
+  width: 99%;
 }
 .tableHead2{
   width: 70%;
@@ -80,8 +84,6 @@ body {
   width:20%;
 }
 tr{
-  margin-top: 10%;
-  border-bottom: solid 1px;
   
   /*Disable text selection*/
   /*
@@ -124,5 +126,5 @@ thead{
 }
 .signOutBtn{
 	margin-left: 70%;
-	margin-top: -3%;
+	margin-top: -6%;
 }

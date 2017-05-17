@@ -23,56 +23,12 @@
 		<h5>Welcome</h5>
 		<button class='btn btn-danger signOutBtn' id='signOff'>Sign Out</button>
 		</div>
-<div class="container productSpace" ondrop="removeItem(event)" ondragover="allowDrop(event)">
-<div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
-    <div class="thumbnail">
-      <img src="img/empty_Cart.png" alt="emptyCat" value='Hamburger'>
-      <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
-      </div>
-      </div>
-  </div>
-	
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Polenta'>
-      <img src="img/empty_Cart.png" alt="..."value='Polenta'>
-      <div class="caption">
-        <h3>Polenta</h3>
-        <p class='itemDetails' value='Polenta'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Meatball Sub'>
-      <img src="img/online_shopping.jpeg" alt="..." value='Meatball Sub'>
-      <div class="caption">
-        <h3>Meatball Sub</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    <div class="thumbnail" draggable="true"  ondragstart="dragItemToCart(event)" value='Eggplant'>
-      <img src="img/full_Cart1.png" alt="..." value='Eggplant'>
-      <div class="caption">
-        <h3>Eggplant</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- The shopping cart -->
+		<!-- The shopping cart -->
 <div class='jumbotron theCart' ondrop="drop(event)" ondragover="allowDrop(event)" >
+	<div class='row'>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="cartSpace">
 				<img src="img/empty_Cart.png" id="cartLogo" alt="shopping cart logo" draggable="false">
 				<span id="cartTitle">Shopping Cart</span>
@@ -87,22 +43,67 @@
 						<th class='tableHead2'>Item</th>
 						<th class='tableHead3'>Price</th>
 					</thead>
-					<tbody id='tableBody'>	
-				<!--		<tr draggable="true" id='hand-bag' ondragstart="dragItemFromCart(event)">
-							<td id='qty'>1</td>
-							<td id='itemName'>Hand Bag</td>
-							<td id='price'>300</td>
-						</tr>
-						<tr draggable="true" id='Eggs' ondragstart="dragItemFromCart(event)">
-							<td id='qty'>3</td>
-							<td id='itemName'>Eggs</td>
-							<td id='price'>900</td>
-						</tr>-->
+					<tbody id='tableBody'>
 					</tbody>
 				</table>
 			</div>
+	</div>
+	</div>
+			
 </div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- All Available Product -->
+<div class="container productSpace " ondrop="removeItem(event)" ondragover="allowDrop(event)">
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="thumbnail">
+      <img src="img/empty_Cart.png" alt="emptyCat" value='Hamburger'>
+      <div class="caption">
+        <h3>Hamburger</h3>
+        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3 class="btn-primary">$200</h3>
+      </div>
+      </div>
+  </div>
+	
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Polenta'>
+      <img src="img/empty_Cart.png" alt="..."value='Polenta'>
+      <div class="caption">
+        <h3>Polenta</h3>
+        <p class='itemDetails' value='Polenta'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3 class="btn-primary">$350</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Meatball Sub'>
+      <img src="img/online_shopping.jpeg" alt="..." value='Meatball Sub'>
+      <div class="caption">
+        <h3>Meatball Sub</h3>
+        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3 class="btn-primary">$5000</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail" draggable="true"  ondragstart="dragItemToCart(event)" value='Eggplant'>
+      <img src="img/full_Cart1.png" alt="..." value='Eggplant'>
+      <div class="caption">
+        <h3>Eggplant</h3>
+        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3 class="btn-primary">$700</h3>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		</script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		
 		<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
@@ -118,6 +119,9 @@
 		  };
 		  firebase.initializeApp(config);
 		</script>
-		<script src='script/dashboard.js'></script>		
+		<script src='script/dashboard.js'></script>
+		<script>
+			//JQUERY script
+			</script>
 	</body>
 </html>
