@@ -4,7 +4,6 @@ window.onload = function() {
 };
 
 function loginPage(){
-	console.log(config)
 	this,regBtn = document.getElementById('register');
 	this.regBtn.addEventListener('submit',signUp.bind(this));
 }
@@ -17,12 +16,14 @@ function signUp(){
 	let Passw = this.regBtn[2];
 	let errMsg  = document.getElementById('errMsg');
 	errMsg.innerHTML = '';
+	sessionStorage.username = document.getElementById('username').value;
 	if(this.regBtn[2].value != this.regBtn[3].value){
 		errMsg.innerHTML = 'The Password do not match';
 	}
 	else{
 		if(Email.checkValidity() && Passw.checkValidity()){
 			myBase.createUserWithEmailAndPassword(Email.value, Passw.value).catch(function(error) {
+				sessionStorage.username = username;
 			  // Handle Errors here.
 			  var errorCode = error.code;
 			  var errorMessage = error.message;
@@ -39,12 +40,14 @@ function signUp(){
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user){
-		alert('Logged IN')
-		location = '/userPage';
+		  //let userId = firebase.auth().currentUser;
+  firebase.database().ref('users/' + user.uid).set({
+	  'username': sessionStorage.username
+	});
 		//User Logged IN
+		location = '/userPage';
 	}
 	else{
-		//alert('Logged OUT')
 		//User not Logged IN
 	}
 })

@@ -12,6 +12,7 @@ body {
   padding-top: 0.4%;
   padding-bottom: 0.4%;
   margin-bottom: 1%;
+  z-index: -1;
 }
 #websiteTitle{
   font-size: 10em;
@@ -126,6 +127,7 @@ thead{
 .greeting{
 	position:fixed;
 	margin-left: 75%;
+  margin-top: -10%;
 	border: 3px solid;
 	width: 23%;
 	height: 10%;

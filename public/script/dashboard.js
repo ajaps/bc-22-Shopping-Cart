@@ -13,7 +13,18 @@ function myPage(){
 //Check if firebase is authenticated
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user){
+    
+    //Load Cart From Database
     loadDB();
+
+    //check if Username is save in Local storage
+    if(localStorage.username){
+      document.getElementById('userName').innerHTML = localStorage.username;
+    }
+    else{
+      getUserName();
+      document.getElementById('userName').innerHTML = localStorage.username;
+    }
 	}
 	else{
 		location = '/login';
@@ -162,7 +173,7 @@ function removeItem(ev) {
 function writeToDB(item, qty, price){
   let userId = firebase.auth().currentUser;
   console.log(userId);
-  firebase.database().ref('users/' + userId.uid + '/' + item).set({
+  firebase.database().ref('users/' + userId.uid + '/products/' + item).set({
 	  'qty': qty,
 	  'price': price
 	});
@@ -170,15 +181,14 @@ function writeToDB(item, qty, price){
 
 function deleteFromDB(item){
   let userId = firebase.auth().currentUser;
-  firebase.database().ref('users/' + userId.uid + '/' + item).remove();
+  firebase.database().ref('users/' + userId.uid + '/products/' + item).remove();
 }
 
 function loadDB(){
   	let userId = firebase.auth().currentUser;
-    console.log(userId.uid);
 
     //Get Database tree
-	firebase.database().ref('/users/' + userId.uid).once('value').then(function(snapshot) {
+	firebase.database().ref('/users/' + userId.uid + '/products/').once('value').then(function(snapshot) {
     var username = snapshot.val();
     console.log(username)
     let cartTable = document.getElementById('tableBody');
@@ -215,5 +225,15 @@ function loadDB(){
       console.log(username[item].qty);
     }
     document.getElementById('totalCost').innerHTML = totalCost;
+  });
+}
+
+function getUserName(){
+  let userId = firebase.auth().currentUser;
+
+  //Get Username from Database
+	firebase.database().ref('/users/' + userId.uid).once('value').then(function(snapshot) {
+    let username = snapshot.val();
+    localStorage.username = username.username;
   });
 }
