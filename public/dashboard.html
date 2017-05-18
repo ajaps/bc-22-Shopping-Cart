@@ -35,14 +35,14 @@
 <div class='jumbotron theCart' ondrop="drop(event)" ondragover="allowDrop(event)" >
 	<div class='row'>
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="cartSpace">
+			<div class="cartSpace" draggable="false">
 				<img src="img/empty_Cart.png" id="cartLogo" alt="shopping cart logo" draggable="false">
-				<span id="cartTitle">Shopping Cart</span>
+				<span id="cartTitle" draggable="false">Shopping Cart</span>
 			</div>
 			<div>
-				<li class="totalBadge list-group-item "><span class="badge badgeNumber" id='totalCost'>0.0</span>TOTAL</li>
+				<li class="totalBadge list-group-item "><span class="badge badgeNumber">$<span id='totalCost'>0.0</span></span>TOTAL</li>
 			</div>
-			<div class='table-responsive theTable'>
+			<div class='theTable table-responsive '>
 				<table class='table table-responsive tableCart table-striped table-hover' id='tableCart'>
 					<thead>
 						<th class='tableHead1'>Qty</th>
@@ -62,257 +62,297 @@
 <!--<section class='productContainer'>-->
 <div class="container productSpace" ondrop="removeItem(event)" ondragover="allowDrop(event)">
 <div class="row ">
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='hamburger'>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Dognut'>
     <div class="thumbnail">
-      <img src="product image/dognut.png" alt="emptyCat" value='Hamburger' class='productimg' width='200px'>
+      <img src="product image/dognut.png" alt="emptyCat" value='Dognut' class='productimg' width='200px'>
       <div class="caption">
         <h3>Dognut</h3>
         <p class='itemDetails'>4 pieces of Hamburger with a glass of milk or fruit juice</p>
-        <h3 class="btn-primary">$38</h3>
-        <h3 class="btn-primary">$38</h3>
+        <h3 class="btn-success">$38</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Dognut");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 	
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Polenta'>
-      <img src="product image/Constance Dress.jpg" alt="..."value='Polenta' class='productimg' width='90px'>
+    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Constance Dress'>
+      <img src="product image/Constance Dress.jpg" alt="..."value='Constance Dress' class='productimg' width='90px'>
       <div class="caption">
         <h3>Constance Dress</h3>
         <p class='itemDetails' value='Polenta'>A lavish floral print, hidden snap secures the crossover V neckline, and covered elastic cinches the waist.</p>
-        <h3 class="btn-primary">$348</h3>
+        <h3 class="btn-success">$348</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Constance Dress");'>Add to Cart</a></p>
       </div>
     </div>
   </div>
 
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Meatball Sub'>
-      <img src="product image/snack.png" alt="..." value='Meatball Sub'>
+    <div class="thumbnail" draggable="true" ondragstart="dragItemToCart(event)" value='Cookies'>
+      <img src="product image/snack.png" alt="..." value='Cookies'>
       <div class="caption">
-        <h3>Meatball Sub</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$5</h3>
+        <h3>Cookies</h3>
+        <p class='itemDetails'>Delicious coloured low fat, low sugar cookies without preservaties.</p>
+        <h3 class="btn-success">$5</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Cookies");'>Add to Cart</a></p>
       </div>
     </div>
   </div>
 
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    <div class="thumbnail" draggable="true"  ondragstart="dragItemToCart(event)" value='Eggplant'>
-      <img src="product image/dognut1.png" alt="..." value='Eggplant'>
+    <div class="thumbnail" draggable="true"  ondragstart="dragItemToCart(event)" value='Flavoured Dognut'>
+      <img src="product image/dognut1.png" alt="..." value='Flavoured Dognut'>
       <div class="caption">
-        <h3>Eggplant</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$700</h3>
+        <h3>Flavoured Dognut</h3>
+        <p class='itemDetails'>Delicious milk and chocolate flavoured dognut for every occassion</p>
+        <h3 class="btn-success">$51</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Flavoured Dognut");'>Add to Cart</a></p>
       </div>
     </div>
   </div>
 
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+  <div class="clearfix"></div>
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Spagetti'>
     <div class="thumbnail">
-      <img src="product image/spagetti.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/spagetti.png" alt="emptyCat" value='Spagetti'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Spagetti with meatballs</h3>
+        <p class='itemDetails'>Spicy hot spagetti with meatballs .</p>
+        <h3 class="btn-success">$120</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Spagetti");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Pounded yam'>
     <div class="thumbnail">
-      <img src="product image/poundedYam.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/poundedYam.png" alt="emptyCat" value='Pounded yam'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Pounded yam with Egusi</h3>
+        <p class='itemDetails'>Pounded Yam with Egusi soup and assorted meat</p>
+        <h3 class="btn-success">$200</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Pounded yam");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Ofada Rice'>
     <div class="thumbnail">
-      <img src="product image/ofadaRice.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/ofadaRice.png" alt="emptyCat" value='Ofada Rice'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Ofada Rice</h3>
+        <p class='itemDetails'>Ofada Rice with chicken stew packed inside fresh leaves </p>
+        <h3 class="btn-success">$150</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Ofada Rice");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Nigerian Jollof Rice'>
     <div class="thumbnail">
-      <img src="product image/nigeria jollof rice.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/nigeria jollof rice.png" alt="emptyCat" value='Nigerian Jollof Rice'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Nigerian Jollof Rice</h3>
+        <p class='itemDetails'>Delicious Nigerian Jollof rice with 2 piece of chicken or turkey</p>
+        <h3 class="btn-success">$139</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Nigerian Jollof Rice");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Flavoured Jollof Rice'>
     <div class="thumbnail">
-      <img src="product image/rice and chicken.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/rice and chicken.png" alt="emptyCat" value='Flavoured Jollof Rice'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Flavoured Jollof Rice</h3>
+        <p class='itemDetails'>Jollof Rice served with plantain, sallad and croaker fish</p>
+        <h3 class="btn-success">$257</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Flavoured Jollof Rice");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Men Briefs RED'>
     <div class="thumbnail">
-      <img src="product image/men undies.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/men undies.png" alt="emptyCat" value='Men Briefs RED'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Men Briefs (RED)</h3>
+        <p class='itemDetails'>A red pure cotton men's brief </p>
+        <h3 class="btn-success">$70</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Men Briefs RED");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
 
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Men Briefs Black and White'>
     <div class="thumbnail">
-      <img src="product image/men undies1.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/men undies1.png" alt="emptyCat" value='Men Briefs Black and White'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Men Briefs (Black and White)</h3>
+        <p class='itemDetails'>A black and white cotton men's brief.</p>
+        <h3 class="btn-success">$73</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Men Briefs Black and White");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Female pant'>
     <div class="thumbnail">
-      <img src="product image/women undies.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/women undies.png" alt="emptyCat" value='Female pant'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Female pant</h3>
+        <p class='itemDetails'>Silk red cotton pant for females</p>
+        <h3 class="btn-success">$15</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Female pant");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="clearfix"></div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Female Smiley Face Pant'>
     <div class="thumbnail">
-      <img src="product image/women undies1.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/women undies1.png" alt="emptyCat" value='Female Smiley Face Pant'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Female Smiley Face Pant</h3>
+        <p class='itemDetails'>A Red female pant with a smiley face.</p>
+        <h3 class="btn-success">$17</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Female Smiley Face Pant");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Blue Female Pant'>
     <div class="thumbnail">
-      <img src="product image/women undies2.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/women undies2.png" alt="emptyCat" value='Blue Female Pant'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Blue Female Pant</h3>
+        <p class='itemDetails'>A Blue female cotton transparent pant</p>
+        <h3 class="btn-success">$13</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Blue Female Pant");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='White Female Bra and pant'>
     <div class="thumbnail">
-      <img src="product image/bra.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/bra.png" alt="emptyCat" value='White Female Bra and pant'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>White Female Bra and Pant</h3>
+        <p class='itemDetails'>A matching White Transparent cotton Female Bra and Pant</p>
+        <h3 class="btn-success">$11</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("White Female Bra and pant");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Blue Female Bra and Pant'>
     <div class="thumbnail">
-      <img src="product image/bra1.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/bra1.png" alt="emptyCat" value='Blue Female Bra and Pant'>
       <div class="caption">
-        <h3>Hamburger</h3>
+        <h3>Blue Female Bra and Pant</h3>
         <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3 class="btn-success">$20</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Blue Female Bra and Pant");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Pink high Heel shoe'>
     <div class="thumbnail">
-      <img src="product image/women shoe.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/women shoe.png" alt="emptyCat" value='Pink high Heel shoe'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Pink high Heel shoe</h3>
+        <p class='itemDetails'>Pink high heel female shoe for all ocassions</p>
+        <h3 class="btn-success">$155</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Pink high Heel shoe");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Brown Men Causal Shoe'>
     <div class="thumbnail">
-      <img src="product image/men shoe.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/men shoe.png" alt="emptyCat" value='Brown Men Causal Shoe'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Brown Men Causal Shoe</h3>
+        <p class='itemDetails'>A brown flat sloe men causal shoe for any occasion or Event</p>
+        <h3 class="btn-success">$202</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Brown Men Causal Shoe");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Lilac men Footware'>
     <div class="thumbnail">
-      <img src="product image/men shoe1.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/men shoe1.png" alt="emptyCat" value='Lilac men Footware'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Lilac men Footware</h3>
+        <p class='itemDetails'>A Lilac italian male footware for that special occasion</p>
+        <h3 class="btn-success">$350</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Lilac men Footware");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='32 inch Plasma TV'>
     <div class="thumbnail">
-      <img src="product image/television.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/television.png" alt="emptyCat" value='32 inch Plasma TV'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>32 inch Plasma TV</h3>
+        <p class='itemDetails'>A Samsung plasma TV, with HDMI port and an extra remote control device</p>
+        <h3 class="btn-success">$2000</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("32 inch Plasma TV");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+  <div class="clearfix"></div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='62 inch Plasma TV'>
     <div class="thumbnail">
-      <img src="product image/television1.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/television1.png" alt="emptyCat" value='62 inch Plasma TV'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>62 inch Plasma TV</h3>
+        <p class='itemDetails'>An LG Plasma Smart TV with VGA and 2 HDMI ports.  Includes and extra remote control devive</p>
+        <h3 class="btn-success">$5005</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("62 inch Plasma TV");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Samsung Galaxy S8'>
     <div class="thumbnail">
-      <img src="product image/samsung galaxy s8.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/samsung galaxy s8.png" alt="emptyCat" value='Samsung Galaxy S8'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Samsung Galaxy S8</h3>
+        <p class='itemDetails'>A Samsung 2017 flagship phone, comes with an iris scanner </p>
+        <h3 class="btn-success">$435</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Samsung Galaxy S8");'>Add to Cart</a></p>
       </div>
       </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Hamburger'>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Iphone 7'>
     <div class="thumbnail">
-      <img src="product image/iphone7.png" alt="emptyCat" value='Hamburger'>
+      <img src="product image/iphone7.png" alt="emptyCat" value='Iphone 7'>
       <div class="caption">
-        <h3>Hamburger</h3>
-        <p class='itemDetails'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3 class="btn-primary">$200</h3>
+        <h3>Iphone 7</h3>
+        <p class='itemDetails'>An Apple Inc slick flagship phone of 2016</p>
+        <h3 class="btn-success">$500</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Iphone 7");'>Add to Cart</a></p>
+      </div>
+      </div>
+  </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" draggable="true" ondragstart="dragItemToCart(event)" value='Cooking Pot'>
+    <div class="thumbnail">
+      <img src="product image/pot.png" alt="emptyCat" value='Cooking Pot'>
+      <div class="caption">
+        <h3>Cooking Pot</h3>
+        <p class='itemDetails'>An aluminum stainless steel pot set, containing 3 pots</p>
+        <h3 class="btn-success">$199</h3>
+        <p><a href="#" class="btn btn-primary" role="button" onclick='addToCartBtn("Cooking Pot");'>Add to Cart</a></p>
       </div>
       </div>
   </div>

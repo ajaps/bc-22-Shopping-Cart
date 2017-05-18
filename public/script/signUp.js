@@ -4,7 +4,7 @@ window.onload = function() {
 };
 
 function loginPage(){
-	this,regBtn = document.getElementById('register');
+	this.regBtn = document.getElementById('register');
 	this.regBtn.addEventListener('submit',signUp.bind(this));
 }
 myBase = firebase.auth();

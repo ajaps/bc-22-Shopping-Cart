@@ -83,8 +83,9 @@ body {
   font-size: 3em;
 }
 .theTable{
-  height: 84%;
-  width: 99%;
+  height: 270px;
+  max-width: 420px;
+  overflow-y: scroll;
 }
 .tableHead2{
   width: 70%;
@@ -93,23 +94,20 @@ body {
   margin-left: 9%;
   width:20%;
 }
-tr{
+tr .cartSpace{
   
   /*Disable text selection*/
-  /*
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtm-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  */
 }
 td {
     padding-top: .5em;
     padding-bottom: .5em;
 }
-
 .totalBadge{
   margin-bottom: 50%;
   font-size: 4em;
@@ -152,7 +150,4 @@ thead{
 
 .productimg{
   height: 10%;
-}
-h3{
-  text-align: center;
 }

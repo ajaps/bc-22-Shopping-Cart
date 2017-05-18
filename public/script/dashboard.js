@@ -41,7 +41,10 @@ function logOut(){
 	});
 }
 
-const allItems = {'Luella Dress':388, 'Eggs':900, 'Hamburger':200, 'Polenta':350, 'Meatball Sub':5000, 'Eggplant':700, 'hand-bag':50000}
+const allItems = {'Luella Dress':388, 'Eggs':900, 'Hamburger':200, 'Dognut':38, 'Constance Dress':348, 'Cookies':5,
+'Flavoured Dognut':51, 'Spagetti':120, 'Pounded yam':200, 'Ofada Rice':150, 'Nigerian Jollof Rice':139, 'Flavoured Jollof Rice':257, 'Men Briefs RED':70, 'Men Briefs Black and White':73,
+'Female pant':15, 'Female Smiley Face Pant':17, 'Blue Female Pant':13, 'White Female Bra and pant':11, 'Blue Female Bra and Pant':20, 'Pink high Heel shoe':155, 'Brown Men Causal Shoe':202,
+'Lilac men Footware':350, '32 inch Plasma TV':2000, '62 inch Plasma TV':5005, 'Samsung Galaxy S8':435, 'Iphone 7':500, 'Cooking Pot':199}
 
 
 let total = 0;
@@ -251,4 +254,83 @@ function getUserName(){
     let username = snapshot.val();
     localStorage.username = username.username;
   });
+}
+
+
+//functionality for Add to Cart button
+function addToCartBtn(data) {
+    console.log(data)
+    let totalCost = Number(document.getElementById('totalCost').innerHTML);
+    
+    //Play Add notification sound
+    //var audio = new Audio('sound/drop.m4a');
+    var audio = new Audio('sound/show.mp3');
+    audio.play();
+    let cartTable = document.getElementById('tableBody');
+    //let cartTable = document.getElementById('tableCart');
+
+    let newItem = document.getElementById(data)
+    console.log(newItem)
+    if(newItem)
+    { 
+      //Ensures only items from the cart cannot be draaged and dropped to increase the number
+      if(newItem.firstChild.innerHTML)
+      {
+        // Increment quantity by 1
+        let itemQty = Number(newItem.firstChild.innerHTML) + 1;
+        newItem.firstChild.innerHTML = itemQty;
+
+        //Calculates and sets cost of total items in the cart
+        totalCost += allItems[data];
+        document.getElementById('totalCost').innerHTML = totalCost;
+
+        //Write to Firebase Database
+        writeToDB(data, itemQty, allItems[data]);
+      }
+    }
+    else
+    {
+      //Checks if the item dragged is valid
+      if(allItems[data] ){
+        //Create new item in the cart
+        let tr = document.createElement('tr');
+    //let tr = cartTable.insertRow(0);
+        tr.setAttribute('id',data);
+        tr.setAttribute('draggable', 'true');
+        //tr.setAttribute('value', data);
+        tr.setAttribute('ondragstart', "dragItemFromCart(event)");
+    //tr.addEventListener('dragstart',dragItemFromCart(event));
+        
+        //set quantity TD
+        let td = document.createElement('td');
+        td.setAttribute('id','qty');
+        //td.className = 'tableHead1';
+        td.innerHTML = 1;
+        //td.setAttribute('ondragstart', "dragItemFromCart(event)");
+        tr.appendChild(td);
+
+        //set item name TD
+        let td1 = document.createElement('td');
+        td1.setAttribute('id','itemName');
+        //td.className = 'tableHead2';
+        td1.innerHTML = data;
+        //td1.setAttribute('ondragstart', "dragItemFromCart(event)");
+        tr.appendChild(td1);
+
+        //set Price ID
+        let td2 = document.createElement('td');
+        td2.setAttribute('id','price');
+        td2.innerHTML = allItems[data];
+        //td2.setAttribute('ondragstart', "dragItemFromCart(event)");
+        tr.appendChild(td2);
+        cartTable.appendChild(tr)
+
+        //Calculates Cost of item in the cart
+        totalCost += allItems[data];
+        document.getElementById('totalCost').innerHTML = totalCost;
+
+        //Write to Firebase Database
+        writeToDB(data, '1', allItems[data]);
+      }
+    }
 }
