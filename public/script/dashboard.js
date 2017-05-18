@@ -44,7 +44,7 @@ function logOut(){
 const allItems = {'Luella Dress':388, 'Eggs':900, 'Hamburger':200, 'Dognut':38, 'Constance Dress':348, 'Cookies':5,
 'Flavoured Dognut':51, 'Spagetti':120, 'Pounded yam':200, 'Ofada Rice':150, 'Nigerian Jollof Rice':139, 'Flavoured Jollof Rice':257, 'Men Briefs RED':70, 'Men Briefs Black and White':73,
 'Female pant':15, 'Female Smiley Face Pant':17, 'Blue Female Pant':13, 'White Female Bra and pant':11, 'Blue Female Bra and Pant':20, 'Pink high Heel shoe':155, 'Brown Men Causal Shoe':202,
-'Lilac men Footware':350, '32 inch Plasma TV':2000, '62 inch Plasma TV':5005, 'Samsung Galaxy S8':435, 'Iphone 7':500, 'Cooking Pot':199}
+'Lilac men Footware':350, '32 inch Plasma TV':2000, '62 inch Plasma TV':5005, 'Samsung Galaxy S8':435, 'Iphone 7':500, 'Cooking Pot':199};
 
 
 let total = 0;
