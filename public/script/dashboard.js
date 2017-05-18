@@ -265,16 +265,6 @@ function loadDB(){
     let cartTable = document.getElementById('tableBody');
     let totalCost = 0;
 
-
-    let localUsername = sessionStorage.username;
-    //check if username is stored in the database
-    if(!jsonData.username){
-        firebase.database().ref('users/' + userId.uid).set({
-          'username': localUsername
-        });
-    }
-
-    
     //Loop Through database items
     for(item in jsonData){
       //Create new item in the cart
