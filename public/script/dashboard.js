@@ -66,7 +66,7 @@ function drop(ev) {
     let totalCost = Number(document.getElementById('totalCost').innerHTML);
     
     //Play Add notification sound
-    var audio = new Audio('sound/show.mp3');
+    var audio = new Audio('sound/drop.m4a');
     audio.play();
     let cartTable = document.getElementById('tableBody');
     let newItem = document.getElementById(data)
@@ -164,7 +164,7 @@ function removeFromCart(data){
 
         //Play delete notification sound
         var audio = new Audio('sound/recycle.wav');
-    audio.play();  
+        audio.play();  
 
         let newItem = document.getElementById(data);
 
@@ -340,7 +340,7 @@ function addToCartBtn(data) {
     
     //Play Add notification sound
     //var audio = new Audio('sound/drop.m4a');
-    var audio = new Audio('sound/show.mp3');
+    var audio = new Audio('sound/drop.m4a');
     audio.play();
     let cartTable = document.getElementById('tableBody');
     //let cartTable = document.getElementById('tableCart');
