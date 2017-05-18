@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 	}
 	else{
-		//location = '/login';
+		location = '/login';
 	}
 })
 
@@ -36,6 +36,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function logOut(){
 	firebase.auth().signOut().then(function() {
 	alert('logged Out');
+  //location='/login'
 	}).catch(function(error){
 	});
 }
