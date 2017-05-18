@@ -39,7 +39,10 @@ function logOut(){
 	}).catch(function(error){
 	});
 }
-const allItems = {'Eggs':900, 'Hamburger':200, 'Polenta':350, 'Meatball Sub':5000, 'Eggplant':700, 'hand-bag':50000}
+
+const allItems = {'Luella Dress':388, 'Eggs':900, 'Hamburger':200, 'Polenta':350, 'Meatball Sub':5000, 'Eggplant':700, 'hand-bag':50000}
+
+
 let total = 0;
 //Allow elemetn to recieve other dragged element(s)
 function allowDrop(ev) {

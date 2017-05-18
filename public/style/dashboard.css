@@ -3,6 +3,9 @@ body {
   font-family: arial, sans-serif;
   overflow: hidden;
 }
+.shoppingNav{
+  background-color: #9ACD32;
+}
 #nttLogo{
   height: 100px;
   width: 100px;
@@ -127,12 +130,29 @@ thead{
 .greeting{
 	position:fixed;
 	margin-left: 75vw;
-  margin-top: -1vw;
+  margin-top: 0vw;
 	border: 3px solid;
 	width: 23vw;
-	height: 5vw;
+	height: 3vw;
+  font-weight: bold;
+}
+.greeting h5{
+  font-weight: bold;
+  font-size: 1.3vw; 
 }
 .signOutBtn{
   margin-left: 16vw;
   font-size: 1.1vw;
+}
+.signOutPosition{
+  position: fixed;
+  margin-top: -3.7vw;
+  margin-left: 75vw;
+}
+
+.productimg{
+  height: 10%;
+}
+h3{
+  text-align: center;
 }

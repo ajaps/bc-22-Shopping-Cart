@@ -2,6 +2,9 @@ body {
   font-size: 62.5%;
   font-family: arial, sans-serif;
 }
+.shoppingNav{
+  background-color: #9ACD32;
+}
 #nttLogo{
   height: 100px;
   width: 100px;
@@ -51,13 +54,41 @@ body {
   background-position: center;
   background-size: cover;
 }
+.carousel-caption.des1{
+  color: white;
+}
 .carousel-caption h1{
   font-size: 5.4em;
   font-family: 'Pacifico', cursive;
   padding-bottom: .4em;
   color: darkblue;
 }
+/*
 .carousel-caption p{
+  font-size: 3em;
+  color: #A52A2A;
+  font-weight: bold
+}*/
+/*#E9967A  #ADFF2F*/
+.p1{
+  font-size: 3em;
+  color: maroon;
+  font-weight: bold
+}
+
+.p2{
+  font-size: 3em;
+  color: black;
+  font-weight: bold
+}
+
+.p3{
+  font-size: 3em;
+  color: yellow;
+  font-weight: bold
+}
+
+.p4{
   font-size: 3em;
   color: black;
   font-weight: bold

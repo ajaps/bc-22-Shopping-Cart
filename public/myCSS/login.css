@@ -3,12 +3,14 @@ body {
   font-family: arial, sans-serif;
   background-color: #333;
 }
+.shoppingNav{
+  background-color: #9ACD32;
+}
 #nttLogo{
   height: 100px;
   width: 100px;
 }
 #loginImg{
-  background-image: url(img/loginImg.jpg);
   width: 60vw;
 }
 .header{
@@ -25,9 +27,10 @@ body {
   color: #191970;
 }
 .loginPage{
-	width:30%;
+	width:32.9vw;
 	margin-left: 67%;
-	background-color: lightgrey;
+	background-color: #DEB887;
+  height: 37vw;
 }
 #noPassW{
   font-size: 0.8em;
@@ -39,10 +42,11 @@ body {
 text-align: center;
 font-family: 'Pacifico', cursive;
 margin-bottom: 7%;
+font-weight: bold;
 }
 .loginBtn{
 margin-left: 40%;
-margin-top:3%;
+margin-top:4vw;
 }
 .makeBold{
 	font-weight: bold;
@@ -59,4 +63,7 @@ margin-top:3%;
 	color: red;
 	font-weight: bold;
 	font-size: 2.5em;
+}
+.email{
+  margin-bottom: 2vw;
 }
