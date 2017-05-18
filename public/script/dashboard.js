@@ -173,7 +173,7 @@ function removeFromCart(data){
 
      
     //Check if qty is  equal to 1 - remove else decrement by 1
-    if(itemQty>1){
+    if(itemQty>1 && (currentValue<maximumValueAllowed)){
       itemQty-=currentValue;
       newItem.firstChild.innerHTML = itemQty;
       totalCost = Number(document.getElementById('totalCost').innerHTML);
@@ -186,7 +186,7 @@ function removeFromCart(data){
     }
     else{
       totalCost = Number(document.getElementById('totalCost').innerHTML);
-      totalCost -= allItems[data];
+      totalCost -= allItems[data]*maximumValueAllowed;
       //subtract from total cost      
       document.getElementById('totalCost').innerHTML = totalCost;
       let row = document.getElementById(data);
@@ -289,6 +289,30 @@ function loadDB(){
         td2.setAttribute('id','price');
         td2.innerHTML = username[item].price;
         tr.appendChild(td2);
+
+        let td3 = document.createElement('td');
+        let form1 = document.createElement('form');
+        let inputNumber = document.createElement('input')
+        inputNumber.setAttribute('type','number')
+        inputNumber.setAttribute('id',item+'1')
+        inputNumber.setAttribute('max',username[item].qty);
+        inputNumber.setAttribute('min','1');
+        inputNumber.setAttribute('value','1');
+        inputNumber.setAttribute('class','inputNumber');
+        form1.appendChild(inputNumber);
+
+        let removeBtn = document.createElement('button');
+        removeBtn.setAttribute('class','removeBtn btn btn-xs btn-danger')
+        removeBtn.innerHTML = 'remove';
+        removeBtn.addEventListener('click',removeFromCart.bind(this, item));
+        form1.appendChild(removeBtn);
+        td3.appendChild(form1);
+        tr.appendChild(td3);
+
+
+
+        //append new row element to table body
+        cartTable.appendChild(tr)
         cartTable.appendChild(tr)
 
         //Calculate Total
