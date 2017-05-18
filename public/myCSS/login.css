@@ -7,6 +7,10 @@ body {
   height: 100px;
   width: 100px;
 }
+#loginImg{
+  background-image: url(img/loginImg.jpg);
+  width: 60vw;
+}
 .header{
   text-align: center;
   padding-top: 0.4%;
@@ -22,8 +26,11 @@ body {
 }
 .loginPage{
 	width:30%;
-	margin-left: 50%;
+	margin-left: 67%;
 	background-color: lightgrey;
+}
+#noPassW{
+  font-size: 0.8em;
 }
 .emailWidth{
 	width: 90%;

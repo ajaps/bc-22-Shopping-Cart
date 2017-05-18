@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 	}
 	else{
-		location = '/login';
+		//location = '/login';
 	}
 })
 
@@ -59,7 +59,10 @@ function drop(ev) {
     //ev.target.appendChild(document.getElementById(data));
     let totalCost = Number(document.getElementById('totalCost').innerHTML);
     
-    
+    //Play Add notification sound
+    //var audio = new Audio('sound/drop.m4a');
+    var audio = new Audio('sound/show.mp3');
+    audio.play();
     let cartTable = document.getElementById('tableBody');
     //let cartTable = document.getElementById('tableCart');
 
@@ -136,6 +139,11 @@ function dragItemFromCart(ev) {
 }
 
 function removeItem(ev) {
+
+    //Play delete notification sound
+    var audio = new Audio('sound/recycle.wav');
+    audio.play();   
+
     ev.preventDefault();
     let totalCost;
     let data = ev.dataTransfer.getData("text");
@@ -143,7 +151,8 @@ function removeItem(ev) {
 
     //Get the quantity value
     let itemQty = Number(newItem.firstChild.innerHTML);
-    
+
+     
 
     //Check if qty is  equal to 1 - remove else decrement by 1
     if(itemQty>1){
@@ -168,6 +177,8 @@ function removeItem(ev) {
       //Delete item from Firebase Database
         deleteFromDB(data); 
     }
+    
+    console.log('im here oooo')
   }
 
 function writeToDB(item, qty, price){
