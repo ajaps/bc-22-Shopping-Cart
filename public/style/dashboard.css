@@ -38,9 +38,9 @@ body {
 .theCart{
   
   position: fixed;
-  width: 23vw;
-  margin-left: 75vw;
-  border: 5px solid black;
+  width: 26vw;
+  margin-left: 73.5vw;
+  border: 1px solid gold;
   height: 63em;
   margin-top: 4.7vw; 
 }
@@ -65,6 +65,10 @@ body {
 }
 .itemHead3{
   margin-left: 35%;
+}
+.itemHead4{
+  margin-left: 35%;
+  size: 1vw;
 }
 .eachItem{
   background-color: red;
@@ -129,7 +133,6 @@ thead{
 	position:fixed;
 	margin-left: 75vw;
   margin-top: 0vw;
-	border: 3px solid;
 	width: 23vw;
 	height: 3vw;
   font-weight: bold;
@@ -150,4 +153,15 @@ thead{
 
 .productimg{
   height: 10%;
+}
+
+.price{
+  text-align: center;
+}
+
+.removeBtn{
+  font-size: 1vw;
+}
+.inputNumber{
+  font-size: 1vw;
 }

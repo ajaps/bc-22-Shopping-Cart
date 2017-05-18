@@ -40,7 +40,6 @@ function signUp(){
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user){
-		  //let userId = firebase.auth().currentUser;
   firebase.database().ref('users/' + user.uid).set({
 	  'username': sessionStorage.username
 	});

@@ -35,8 +35,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function logOut(){
 	firebase.auth().signOut().then(function() {
-	alert('logged Out');
-  //location='/login'
+	alert('You have been logged Out');
+  location='/login'
 	}).catch(function(error){
 	});
 }
@@ -63,18 +63,14 @@ function drop(ev) {
 
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    //ev.target.appendChild(document.getElementById(data));
     let totalCost = Number(document.getElementById('totalCost').innerHTML);
     
     //Play Add notification sound
-    //var audio = new Audio('sound/drop.m4a');
     var audio = new Audio('sound/show.mp3');
     audio.play();
     let cartTable = document.getElementById('tableBody');
-    //let cartTable = document.getElementById('tableCart');
-
     let newItem = document.getElementById(data)
-
+    
     if(newItem)
     { 
       //Ensures only items from the cart cannot be draaged and dropped to increase the number
@@ -83,6 +79,9 @@ function drop(ev) {
         // Increment quantity by 1
         let itemQty = Number(newItem.firstChild.innerHTML) + 1;
         newItem.firstChild.innerHTML = itemQty;
+
+        let maxNumber = Number(newItem.lastChild.firstChild.firstChild.max) + 1;
+        newItem.lastChild.firstChild.firstChild.max = maxNumber
 
         //Calculates and sets cost of total items in the cart
         totalCost += allItems[data];
@@ -98,35 +97,51 @@ function drop(ev) {
       if(allItems[data] ){
         //Create new item in the cart
         let tr = document.createElement('tr');
-		//let tr = cartTable.insertRow(0);
         tr.setAttribute('id',data);
         tr.setAttribute('draggable', 'true');
         //tr.setAttribute('value', data);
         tr.setAttribute('ondragstart', "dragItemFromCart(event)");
-		//tr.addEventListener('dragstart',dragItemFromCart(event));
         
         //set quantity TD
         let td = document.createElement('td');
         td.setAttribute('id','qty');
-        //td.className = 'tableHead1';
         td.innerHTML = 1;
-        //td.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td);
 
         //set item name TD
         let td1 = document.createElement('td');
         td1.setAttribute('id','itemName');
-        //td.className = 'tableHead2';
         td1.innerHTML = data;
-        //td1.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td1);
 
         //set Price ID
         let td2 = document.createElement('td');
         td2.setAttribute('id','price');
         td2.innerHTML = allItems[data];
-        //td2.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td2);
+
+        let td3 = document.createElement('td');
+        let form1 = document.createElement('form');
+        let inputNumber = document.createElement('input')
+        inputNumber.setAttribute('type','number')
+        inputNumber.setAttribute('id',data+'1')
+        inputNumber.setAttribute('max','1');
+        inputNumber.setAttribute('min','1');
+        inputNumber.setAttribute('value','1');
+        inputNumber.setAttribute('class','inputNumber');
+        form1.appendChild(inputNumber);
+
+        let removeBtn = document.createElement('button');
+        removeBtn.setAttribute('class','removeBtn btn btn-xs btn-danger')
+        removeBtn.innerHTML = 'remove';
+        removeBtn.addEventListener('click',removeFromCart.bind(this, data));
+        form1.appendChild(removeBtn);
+        td3.appendChild(form1);
+        tr.appendChild(td3);
+
+
+
+        //append new row element to table body
         cartTable.appendChild(tr)
 
         //Calculates Cost of item in the cart
@@ -139,7 +154,50 @@ function drop(ev) {
     }
 }
 
+//Adds functionality to the remove button
+function removeFromCart(data){
+  let currentValue = Number(document.getElementById(data+'1').value);
+  let maximumValueAllowed = Number(document.getElementById(data+'1').max);
+      
+      if(document.getElementById(data+'1').checkValidity());
+      if(currentValue <= maximumValueAllowed){
 
+        //Play delete notification sound
+        var audio = new Audio('sound/recycle.wav');
+    audio.play();  
+
+        let newItem = document.getElementById(data);
+
+    //Get the quantity value
+    let itemQty = Number(newItem.firstChild.innerHTML);
+
+     
+    //Check if qty is  equal to 1 - remove else decrement by 1
+    if(itemQty>1){
+      itemQty-=currentValue;
+      newItem.firstChild.innerHTML = itemQty;
+      totalCost = Number(document.getElementById('totalCost').innerHTML);
+      //subtract from total cost
+      totalCost =totalCost -  allItems[data] * currentValue;
+      document.getElementById('totalCost').innerHTML = totalCost;
+      
+      //Write to Firebase Database
+        writeToDB(data, itemQty, allItems[data]);
+    }
+    else{
+      totalCost = Number(document.getElementById('totalCost').innerHTML);
+      totalCost -= allItems[data];
+      //subtract from total cost      
+      document.getElementById('totalCost').innerHTML = totalCost;
+      let row = document.getElementById(data);
+      row.parentNode.removeChild(row);
+
+      //Delete item from Firebase Database
+        deleteFromDB(data); 
+    }
+      }
+
+}
 //Appends data on item drag from Cart
 function dragItemFromCart(ev) {
     ev.dataTransfer.setData("text", ev.target.getAttribute('id'));
@@ -160,7 +218,6 @@ function removeItem(ev) {
     let itemQty = Number(newItem.firstChild.innerHTML);
 
      
-
     //Check if qty is  equal to 1 - remove else decrement by 1
     if(itemQty>1){
       itemQty-=1;
@@ -184,13 +241,10 @@ function removeItem(ev) {
       //Delete item from Firebase Database
         deleteFromDB(data); 
     }
-    
-    console.log('im here oooo')
   }
 
 function writeToDB(item, qty, price){
   let userId = firebase.auth().currentUser;
-  console.log(userId);
   firebase.database().ref('users/' + userId.uid + '/products/' + item).set({
 	  'qty': qty,
 	  'price': price
@@ -208,7 +262,6 @@ function loadDB(){
     //Get Database tree
 	firebase.database().ref('/users/' + userId.uid + '/products/').once('value').then(function(snapshot) {
     var username = snapshot.val();
-    console.log(username)
     let cartTable = document.getElementById('tableBody');
     let totalCost = 0;
     //Loop Through database items
@@ -240,7 +293,6 @@ function loadDB(){
 
         //Calculate Total
         totalCost += Number(username[item].qty) * Number(username[item].price)
-      console.log(username[item].qty);
     }
     document.getElementById('totalCost').innerHTML = totalCost;
   });
@@ -259,7 +311,6 @@ function getUserName(){
 
 //functionality for Add to Cart button
 function addToCartBtn(data) {
-    console.log(data)
     let totalCost = Number(document.getElementById('totalCost').innerHTML);
     
     //Play Add notification sound
@@ -270,12 +321,14 @@ function addToCartBtn(data) {
     //let cartTable = document.getElementById('tableCart');
 
     let newItem = document.getElementById(data)
-    console.log(newItem)
     if(newItem)
     { 
       //Ensures only items from the cart cannot be draaged and dropped to increase the number
       if(newItem.firstChild.innerHTML)
       {
+        let maxNumber = Number(newItem.lastChild.firstChild.firstChild.max) + 1;
+        newItem.lastChild.firstChild.firstChild.max = maxNumber
+
         // Increment quantity by 1
         let itemQty = Number(newItem.firstChild.innerHTML) + 1;
         newItem.firstChild.innerHTML = itemQty;
@@ -294,35 +347,46 @@ function addToCartBtn(data) {
       if(allItems[data] ){
         //Create new item in the cart
         let tr = document.createElement('tr');
-    //let tr = cartTable.insertRow(0);
         tr.setAttribute('id',data);
         tr.setAttribute('draggable', 'true');
-        //tr.setAttribute('value', data);
         tr.setAttribute('ondragstart', "dragItemFromCart(event)");
-    //tr.addEventListener('dragstart',dragItemFromCart(event));
         
         //set quantity TD
         let td = document.createElement('td');
         td.setAttribute('id','qty');
-        //td.className = 'tableHead1';
         td.innerHTML = 1;
-        //td.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td);
 
         //set item name TD
         let td1 = document.createElement('td');
         td1.setAttribute('id','itemName');
-        //td.className = 'tableHead2';
         td1.innerHTML = data;
-        //td1.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td1);
 
         //set Price ID
         let td2 = document.createElement('td');
         td2.setAttribute('id','price');
         td2.innerHTML = allItems[data];
-        //td2.setAttribute('ondragstart', "dragItemFromCart(event)");
         tr.appendChild(td2);
+
+        let td3 = document.createElement('td');
+        let inputNumber = document.createElement('input')
+        inputNumber.setAttribute('id',data+'1')
+        inputNumber.setAttribute('type','number')
+        inputNumber.setAttribute('max','1');
+        inputNumber.setAttribute('min','1');
+        inputNumber.setAttribute('value','1');
+        inputNumber.setAttribute('class','inputNumber');
+        td3.appendChild(inputNumber);
+
+        let removeBtn = document.createElement('button');
+        removeBtn.setAttribute('class','removeBtn btn btn-xs btn-danger')
+        removeBtn.innerHTML = 'remove';
+        removeBtn.addEventListener('click',removeFromCart.bind(this, data));
+        td3.appendChild(removeBtn)
+        tr.appendChild(td3);
+
+
         cartTable.appendChild(tr)
 
         //Calculates Cost of item in the cart
