@@ -56,13 +56,17 @@ function allowDrop(ev) {
 //Appends data on item drag Product
 function dragItemToCart(ev) {
     //ev.dataTransfer.setData("text", ev.target.getAttribute('id'));
-    ev.dataTransfer.setData("text", ev.target.getAttribute('value'));
+    ev.dataTransfer.setData("uri-list", ev.target.getAttribute('value'));
 }
 
 function drop(ev) {
 
+    //console.log(ev.dataTransfer.getData('uri-list'))
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
+    var data = ev.dataTransfer.getData("uri-list");
+
+    //To ensure data is sent only from the product section
+    if(data){
     let totalCost = Number(document.getElementById('totalCost').innerHTML);
     
     //Play Add notification sound
@@ -152,6 +156,7 @@ function drop(ev) {
         writeToDB(data, '1', allItems[data]);
       }
     }
+  }
 }
 
 //Adds functionality to the remove button
@@ -205,14 +210,18 @@ function dragItemFromCart(ev) {
 
 function removeItem(ev) {
 
-    //Play delete notification sound
-    var audio = new Audio('sound/recycle.wav');
-    audio.play();   
+   
 
     ev.preventDefault();
     let totalCost;
     let data = ev.dataTransfer.getData("text");
     let newItem = document.getElementById(data);
+
+    //To Ensure data is only recieved from the cart section and not from itself(product section)
+    if(data){
+    //Play delete notification sound
+    var audio = new Audio('sound/recycle.wav');
+    audio.play();
 
     //Get the quantity value
     let itemQty = Number(newItem.firstChild.innerHTML);
@@ -242,6 +251,7 @@ function removeItem(ev) {
         deleteFromDB(data); 
     }
   }
+}
 
 function writeToDB(item, qty, price){
   let userId = firebase.auth().currentUser;
