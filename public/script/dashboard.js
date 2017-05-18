@@ -261,11 +261,22 @@ function loadDB(){
 
     //Get Database tree
 	firebase.database().ref('/users/' + userId.uid + '/products/').once('value').then(function(snapshot) {
-    var username = snapshot.val();
+    var jsonData = snapshot.val();
     let cartTable = document.getElementById('tableBody');
     let totalCost = 0;
+
+
+    let localUsername = sessionStorage.username;
+    //check if username is stored in the database
+    if(!jsonData.username){
+        firebase.database().ref('users/' + userId.uid).set({
+          'username': localUsername
+        });
+    }
+
+    
     //Loop Through database items
-    for(item in username){
+    for(item in jsonData){
       //Create new item in the cart
         let tr = document.createElement('tr');
         tr.setAttribute('id',item);
@@ -275,7 +286,7 @@ function loadDB(){
         //set quantity TD
         let td = document.createElement('td');
         td.setAttribute('id','qty');
-        td.innerHTML = username[item].qty;
+        td.innerHTML = jsonData[item].qty;
         tr.appendChild(td);
 
         //set item name TD
@@ -287,7 +298,7 @@ function loadDB(){
         //set Price ID
         let td2 = document.createElement('td');
         td2.setAttribute('id','price');
-        td2.innerHTML = username[item].price;
+        td2.innerHTML = jsonData[item].price;
         tr.appendChild(td2);
 
         let td3 = document.createElement('td');
@@ -295,7 +306,7 @@ function loadDB(){
         let inputNumber = document.createElement('input')
         inputNumber.setAttribute('type','number')
         inputNumber.setAttribute('id',item+'1')
-        inputNumber.setAttribute('max',username[item].qty);
+        inputNumber.setAttribute('max',jsonData[item].qty);
         inputNumber.setAttribute('min','1');
         inputNumber.setAttribute('value','1');
         inputNumber.setAttribute('class','inputNumber');
@@ -316,7 +327,7 @@ function loadDB(){
         cartTable.appendChild(tr)
 
         //Calculate Total
-        totalCost += Number(username[item].qty) * Number(username[item].price)
+        totalCost += Number(jsonData[item].qty) * Number(jsonData[item].price)
     }
     document.getElementById('totalCost').innerHTML = totalCost;
   });
@@ -327,8 +338,8 @@ function getUserName(){
 
   //Get Username from Database
 	firebase.database().ref('/users/' + userId.uid).once('value').then(function(snapshot) {
-    let username = snapshot.val();
-    localStorage.username = username.username;
+    let jsonData = snapshot.val();
+    localStorage.username = jsonData.username;
   });
 }
 
