@@ -31,7 +31,7 @@ body {
   height:470px;
 }
 .productContainer{
-  height: -60%;
+  height: -59%;
   overflow-y: scroll;
   overflow: scroll;
 }
@@ -42,7 +42,7 @@ body {
   margin-left: 73.5vw;
   border: 1px solid gold;
   height: 63em;
-  margin-top: 4.7vw; 
+  margin-top: 4.5%; 
 }
 #cartTitle{
   font-size: 3em;
@@ -87,7 +87,7 @@ body {
   font-size: 3em;
 }
 .theTable{
-  height: 270px;
+  height: 21vw;
   max-width: 420px;
   overflow-y: scroll;
 }
@@ -132,7 +132,7 @@ thead{
 .greeting{
 	position:fixed;
 	margin-left: 75vw;
-  margin-top: 0vw;
+  margin-top: 2vw;
 	width: 23vw;
 	height: 3vw;
   font-weight: bold;
@@ -164,4 +164,35 @@ thead{
 }
 .inputNumber{
   font-size: 1vw;
+}
+.emailVerify{
+  font-size: 1.5vw;
+  color: red;
+  text-align: center;
+
+
+  -webkit-animation: flicker 10s infinite;
+  -moz-animation: flicker 10s infinite;
+  -o-animation: flicker 10s infinite;
+  animation: flicker 10s infinite;
+}
+@keyframes flicker{
+  0%{opacity: 1;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
+}
+@-o-keyframes flicker{
+  0%{opacity: 1;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
+}
+@-moz-keyframes flicker{
+  0%{opacity: 1;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
+}
+@-webkit-keyframes flicker{
+  0%{opacity: 1;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
 }

@@ -25,17 +25,29 @@ firebase.auth().onAuthStateChanged(function(user) {
       getUserName();
       document.getElementById('username').innerHTML = localStorage.username;
     }
+
+
+    //Check if user Email is verified
+    if(!user.emailVerified){
+      document.getElementById('emailVerify').removeAttribute('hidden');
+      document.getElementById('theCart').setAttribute('style', 'margin-top:1.5%');
+    }
+    else{
+      document.getElementById('emailVerify').setAttribute('hidden','true');
+    }
+    
 	}
 	else{
 		location = '/login';
 	}
 })
 
+function isUserEmailVerified(){
 
+}
 
 function logOut(){
 	firebase.auth().signOut().then(function() {
-	alert('You have been logged Out');
   location='/login'
 	}).catch(function(error){
 	});

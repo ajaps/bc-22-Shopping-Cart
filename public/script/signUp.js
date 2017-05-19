@@ -43,6 +43,8 @@ firebase.auth().onAuthStateChanged(function(user) {
   firebase.database().ref('users/' + user.uid).set({
 	  'username': sessionStorage.username
 	});
+
+	emailVerification();
 	localStorage.username = sessionStorage.username;
 		//User Logged IN
 		location = '/userPage';
@@ -51,3 +53,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 		//User not Logged IN
 	}
 })
+
+function emailVerification(){
+		var theUser = firebase.auth().currentUser;
+	theUser.sendEmailVerification().then(function() {
+		}, function(error) {
+	});
+}
