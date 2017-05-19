@@ -127,7 +127,7 @@ thead{
   position: -o-sticky;
   position: sticky;
   top: 0px;
-  background-color: blue;
+  background-color: lightblue;
 }
 .greeting{
 	position:fixed;
